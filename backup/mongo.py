@@ -34,7 +34,7 @@ class MongoBackup(BackupBase):
         output_config_parser = argparse.ArgumentParser()
         output_config_parser.add_argument("-o", "--output")
         output_config_parser.add_argument("--archive")
-        output_args = output_config_parser.parse_args(self.extra)
+        output_args = output_config_parser.parse_known_args(self.extra)
 
         if not any([output_args.output, output_args.archive]):
             # generate sensible defaults for output file: timestamped gziped archived file
