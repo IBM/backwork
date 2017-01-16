@@ -3,10 +3,12 @@
 This module is responsible for initializing the notification handlers that are
 enabled and routing incoming messages.
 """
+import os
 from lib import utils
 from .notifier_base import NotifierBase
 
-engines = utils.load_engines(NotifierBase, "./notifiers", "notifiers.")
+current_path = os.path.dirname(os.path.realpath(__file__))
+engines = utils.load_engines(NotifierBase, current_path, "notifiers.")
 active_engines = []
 
 def parse_args(parser):
