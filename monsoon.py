@@ -8,8 +8,6 @@ import backup
 import notifiers
 import upload
 
-from raven import Client
-
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
     format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
 

@@ -4,12 +4,14 @@ Backup commands should receive an argument specifying where to store the backup
 file. It should also provide the options to archive, compress and timestamp the
 backup into a single file to facilitate storage.
 """
+import os
 from lib import utils
 from .backup_base import BackupBase
 
 __all__ = ["parse_args", "backup", "BackupError"]
 
-engines = utils.load_engines(BackupBase, './backup', 'backup.')
+current_path = os.path.dirname(os.path.realpath(__file__))
+engines = utils.load_engines(BackupBase, current_path, "backup.")
 
 def parse_args(subparsers):
     """Parse command line arguments passed to the backup command."""
