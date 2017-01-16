@@ -1,3 +1,4 @@
+import argparse
 import time
 import logging
 import os
@@ -29,9 +30,13 @@ class MongoBackup(BackupBase):
         """
         log.info("starting mongo backup...")
 
-        any_in = lambda a, b: any(i in b for i in a)
+        # parse extra arguments to check output options
+        output_config_parser = argparse.ArgumentParser()
+        output_config_parser.add_argument("-o", "--output")
+        output_config_parser.add_argument("--archive")
+        output_args = output_config_parser.parse_args(self.extra)
 
-        if not any_in(["-o", "--output", "--archive"], self.extra):
+        if not any([output_args.output, output_args.archive]):
             # generate sensible defaults for output file: timestamped gziped archived file
             filename = "mongo_backup_{}.archive.gz".format(time.strftime("%Y%m%d-%H%M%S"))
             path = os.path.join(os.getcwd(), "dumps", filename)
