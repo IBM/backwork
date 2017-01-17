@@ -186,9 +186,7 @@ class BackupBase(object):
         """
         raise NotImplementedError("Base method not overriden.")
 
-```
 
-```python
 class UploadBase(object):
     """Base class that describes the interface an upload command must implement.
 
@@ -221,9 +219,8 @@ class UploadBase(object):
         notifier can hadle it.
         """
         raise NotImplementedError("Base method not overriden.")
-```
 
-```python
+
 class NotifierBase(object):
     """Base class for notifiers
 
