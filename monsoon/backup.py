@@ -6,12 +6,11 @@ backup into a single file to facilitate storage.
 """
 import os
 from lib import utils
-from .backup_base import BackupBase
 
 __all__ = ["parse_args", "backup", "BackupError"]
 
 current_path = os.path.dirname(os.path.realpath(__file__))
-engines = utils.load_engines(BackupBase, current_path, "backup.")
+engines = utils.load_engines("monsoon.backups")
 
 def parse_args(subparsers):
     """Parse command line arguments passed to the backup command."""

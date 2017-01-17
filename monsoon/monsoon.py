@@ -24,7 +24,7 @@ def parse_args(args=sys.argv[1:]):
 
     return parser.parse_known_args()
 
-if __name__ == "__main__":
+def main():
     args, extra = parse_args()
     notifiers.initialize(args, extra)
 
@@ -38,5 +38,4 @@ if __name__ == "__main__":
     except Exception as e:
         notifiers.notify(e)
         sys.exit(1)
-
 

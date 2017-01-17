@@ -5,12 +5,11 @@ should raise exceptions in case of failures so that notifiers can handle them.
 """
 import os
 from lib import utils
-from .upload_base import UploadBase
 
 __all__ = ["parse_args", "upload", "UploadError"]
 
 current_path = os.path.dirname(os.path.realpath(__file__))
-engines = utils.load_engines(UploadBase, current_path, "upload.")
+engines = utils.load_engines("monsoon.uploads")
 
 def parse_args(subparsers):
     """Add parsing rules for the upload command and subcommands."""

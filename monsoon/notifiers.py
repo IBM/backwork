@@ -5,10 +5,9 @@ enabled and routing incoming messages.
 """
 import os
 from lib import utils
-from .notifier_base import NotifierBase
 
 current_path = os.path.dirname(os.path.realpath(__file__))
-engines = utils.load_engines(NotifierBase, current_path, "notifiers.")
+engines = utils.load_engines("monsoon.notifiers")
 active_engines = []
 
 def parse_args(parser):
