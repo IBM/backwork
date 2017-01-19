@@ -11,6 +11,8 @@ import upload
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
     format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
 
+log = logging.getLogger(__name__)
+
 def parse_args(args=sys.argv[1:]):
     parser = argparse.ArgumentParser()
 
@@ -37,5 +39,6 @@ def main():
 
     except Exception as e:
         notifiers.notify(e)
+        log.exception(e)
         sys.exit(1)
 
