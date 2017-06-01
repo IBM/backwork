@@ -4,7 +4,7 @@ This module is responsible for initializing the notification handlers that are
 enabled and routing incoming messages.
 """
 import os
-from .lib import utils  # pylint: disable=relative-import
+from .lib import utils
 
 CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
 ENGINES = utils.load_engines("monsoon.notifiers")

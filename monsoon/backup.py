@@ -5,7 +5,7 @@ file. It should also provide the options to archive, compress and timestamp the
 backup into a single file to facilitate storage.
 """
 import os
-from .lib import utils  # pylint: disable=relative-import
+from .lib import utils
 
 __all__ = ["parse_args", "backup", "BackupError"]
 
