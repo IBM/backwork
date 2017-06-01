@@ -1,0 +1,22 @@
+sudo: false
+language: python
+python:
+  - '2.7'
+  - '3.6'
+install:
+  - pip install -r requirements.txt
+script:
+  - pylint files setup.py
+deploy:
+  provider: pypi
+  user: "leonsp@ca.ibm.com"
+  password:
+    secure: RSLx4AfnszDlrl07rFMBLTW4ih7e7M2guciGtVIL/2rbYzZFVQKZCndinFiVoCvriDQfabADDTHIiOPTkHzuCJ2LrxlEvkMWF+mFPwr1u8HuDiSlRyP4FVELsTkbSKvOLmejAhOXuFVxSmedj+D2Lt08u2cFFHLzisvfLniAVDIqmOKYq3H03sv9q8epU5QnS2dl0yWzfVhS5Fhtilec2CtbreViG8SaNjQQOUfrR1AM59PdI9/2VxvfYCujpArDMLV/nUUhq5JnBZW6RcK9lrWNjw0TPqV6Quvo7VrtdgAaEqrmofEZ9Fwh9C62DIq0HgHeRcQRvZrMNoJEvuuMdnGxShqIkXW2+0yrd4NfcSVPXNtk991B7mFHjcPsUPbONy5ZMOL8BTbuW340P5k+h7VXrfE7HXMaUPtlPjELU0p6L0DDRlKfL07Jf0kvjr7ssEXEuUUAuq+IgPsL0vSxhncByrjNSoMwwwOTFIbazpShMmVLWU8d4vsMHXZZULHzi/uLS1nE0SsohnDVNvF50N8HtoHh3twVL2dsm569nAx+lGhNLy1APeLv3yl5vIH+KqTxWQIDKKwgOYKrt6daZzk5hYrn/L1OvWuhkkeI4+oi8Fqaiyeu2NzjsCe0I/BfJmJwOPnVXQybXp84kNask/iOdUHM442AR1mnHyJpJA0=
+  server: "https://na.artifactory.swg-devops.com/artifactory/api/pypi/apset-pypi-local"
+  on:
+    python: '2.7'
+    repo: apset/monsoon
+    tags: true
+notifications:
+  slack:
+    secure: "EvcFxI8CddcjTjRPQYlh4SSyedYV55RRRyFBfuT9bpb0WRdmsOfsdyzCyJ2LjcqKlJ9IJIXd2oS9RQniSLgoc77KRyFhyX3ZnYr/v+d2Dk/IVWF7gDyMZ1UaYMhmnyXgX3SrUnu3uL5ID3KjsfQh5C7fATlj+M6k1qBLrpSJ8Q2rSkDEGOdtLKNAPp/eamXXizZcNUXmLXqqKhtOB8hvAtzVaXNxypfSkYQu9YpqS8GWwnK9EWgjMw0axPJ80iE9wlXDcOax5DdROfhbz9E8NZjaCSjadqPij3OebINI0ToRYlCvtjOQ32nx3av1rJV5rZ33/vn2Uq15RBOW/dkTI4ilQ+6ymlKVuDs+PsLzpYXmkT2XZJo+KXENUc+1MYxhpewmtio/KpV/1ecbtpzWFeFM/beLmrASePoKOgiNvH66b+ifSP4sQsFBZMhccF5px6+kiW3i8A1jY3mEyO9Ubh0jRl4bRdhaMqS5CqM5B7Vs86xiWoZqF+XEE4CPTT5oKTWptLEdXKTkJHkOLHohjjYKu2YT41Bm7jIng3CXD2Ej26bg65VHs78v/g/z5qimxrBgW1VgbUST+PpCyjb2CPNoAU++QgdstHX8Z4usPi2PpvP/zm+hGH4yCIDKvbSapGyC/aemlNQm2v7Pe+qNNFpqv/eVAn9YBS2kmMeNfA=B0imf80sSJWy"

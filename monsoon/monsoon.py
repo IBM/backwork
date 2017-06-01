@@ -1,19 +1,25 @@
 #!/usr/bin/env python
+"""Backup simplified.
+
+monsoon is a toolkit that simplifies the process of backing up databases. It
+handles the backup process itself as well as upload and error notification.
+"""
 
 import argparse
 import logging
 import sys
 
-import backup
-import notifiers
-import upload
+import monsoon.backup as backup
+import monsoon.notifiers as notifiers
+import monsoon.upload as upload
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
-    format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
+                    format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
 
-log = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
-def parse_args(args=sys.argv[1:]):
+def parse_args():
+    """Parse command line arguments."""
     parser = argparse.ArgumentParser()
 
     # parse notifier arguments
@@ -27,6 +33,7 @@ def parse_args(args=sys.argv[1:]):
     return parser.parse_known_args()
 
 def main():
+    """Core functionality."""
     args, extra = parse_args()
     notifiers.initialize(args, extra)
 
@@ -35,10 +42,9 @@ def main():
             backup.backup(args, extra)
 
         elif args.command == "upload":
-            upload.upload(args,extra)
+            upload.upload(args, extra)
 
-    except Exception as e:
-        notifiers.notify(e)
-        log.exception(e)
+    except Exception as error:  # pylint: disable=broad-except
+        notifiers.notify(error)
+        LOG.exception(error)
         sys.exit(1)
-

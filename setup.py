@@ -1,17 +1,23 @@
-from setuptools import setup, find_packages
-from os import path
+"""Backup simplified.
 
-here = path.abspath(path.dirname(__file__))
+monsoon is a toolkit that simplifies the process of backing up databases. It
+handles the backup process itself as well as upload and error notification.
+"""
+
+from os import path
+from setuptools import setup, find_packages
+
+HERE = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md')) as f:
-    long_description = f.read()
+with open(path.join(HERE, 'README.md')) as f:
+    LONG_DESCRIPTION = f.read()
 
 setup(
-    name="monsoon",
-    version="0.1.1",
+    name="monsoon-cli",
+    version="0.1.2",
     description="Backup made easy.",
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     url="https://github.ibm.com/apset/monsoon",
     author="Luiz Aoqui",
     author_email="laoqui@ca.ibm.com",

@@ -1,7 +1,7 @@
 """Module to hold common useful functions."""
-import importlib
-import inspect
-import pkgutil
+# import importlib
+# import inspect
+# import pkgutil
 import pkg_resources
 
 def load_engines(group):
@@ -19,7 +19,7 @@ def load_engines(group):
     #         if is_engine:
     #             engines[klass.command] = klass
 
-    for ep in pkg_resources.iter_entry_points(group=group):
-        engines[ep.name] = ep.load()
+    for entry_point in pkg_resources.iter_entry_points(group=group):
+        engines[entry_point.name] = entry_point.load()
 
     return engines
