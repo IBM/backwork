@@ -8,5 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 -   Travis CI integration
 ### Fixed
--   Name conflict between `monsoon` and `monsoon-cli`
+-   Name conflict between
+    [monsoon](https://pypi.python.org/pypi/monsoon/0.1.2) and
+    `monsoon-cli`
 -   Pylint style
