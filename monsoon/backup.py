@@ -26,7 +26,7 @@ def parse_args(subparsers):
 
     # load engines' parsers
     backup_subparsers = backup_parser.add_subparsers(dest="type")
-    for _, klass in ENGINES.iteritems():
+    for _, klass in ENGINES.items():
         klass.parse_args(backup_subparsers)
 
 def backup(args, extra):

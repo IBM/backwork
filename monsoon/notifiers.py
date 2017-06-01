@@ -15,7 +15,7 @@ def parse_args(parser):
     parser.add_argument("-n", "--notify", action="append", dest="notifiers",
                         help="enable a notifier, it can be used multiple times")
 
-    for _, klass in ENGINES.iteritems():
+    for _, klass in ENGINES.items():
         klass.parse_args(parser)
 
 def initialize(args, extra):

@@ -18,7 +18,7 @@ def parse_args(subparsers):
     upload_parser = subparsers.add_parser("upload", description=description)
     upload_subparsers = upload_parser.add_subparsers(dest="service")
 
-    for _, klass in ENGINES.iteritems():
+    for _, klass in ENGINES.items():
         klass.parse_args(upload_subparsers)
 
 def upload(args, extra):
