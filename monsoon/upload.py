@@ -4,7 +4,7 @@ Upload commands take a local file and upload them to a remote service. They
 should raise exceptions in case of failures so that notifiers can handle them.
 """
 import os
-from lib import utils  # pylint: disable=relative-import
+from .lib import utils  # pylint: disable=relative-import
 
 __all__ = ["parse_args", "upload", "UploadError"]
 

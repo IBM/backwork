@@ -1,4 +1,5 @@
-"""Module to hold common useful functions."""
+"""Module to hold common useful functions.
+"""
 # import importlib
 # import inspect
 # import pkgutil
