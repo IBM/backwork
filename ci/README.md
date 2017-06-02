@@ -8,7 +8,7 @@ Artifactory.
 If you need to encrypt a new Artifactory password, use this command:
 
 ```shell
-travis encrypt
+travis encrypt <MY_PASSWORD>
 ```
 
 You can then paste the output in `.travis.yml` under `deploy: password:`
