@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md')) as f:
 
 setup(
     name="monsoon-cli",
-    version="0.1.2",
+    version="0.1.5",
     description="Backup made easy.",
     long_description=LONG_DESCRIPTION,
     url="https://github.ibm.com/apset/monsoon",
