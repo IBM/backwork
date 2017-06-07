@@ -9,9 +9,9 @@ import argparse
 import logging
 import sys
 
-import monsoon.backup as backup
-import monsoon.notifiers as notifiers
-import monsoon.upload as upload
+from . import backup
+from . import notifiers
+from . import upload
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
