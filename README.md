@@ -30,15 +30,15 @@ optional arguments:
 
 ## Plug-ins
 Just having `backwork` is not enough. You will need to the plug-ins that
-suit your needs. You can install plugins by running:
+suit your needs. You can install plug-ins by running:
 ```sh
-$ pip install <plugin_name>
+$ pip install <plug-in_name>
 ```
 
 Plug-ins are divided into three categories:
 
 ### Backup
-Backup plugins are responsible for connecting to a databases and doing the
+Backup plug-ins are responsible for connecting to a databases and doing the
 actual backup process.
 
 Once you install a backup plug-in it will be available via the `backwork backup`
@@ -59,7 +59,7 @@ optional arguments:
                 command
 ```
 
-#### Available plugin-ins:
+#### Available plug-ins:
 * `backwork-backup-mongo`
 
 ### Upload
@@ -79,7 +79,7 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
 ```
-#### Available plugin-ins:
+#### Available plug-ins:
 * `backwork-upload-softlayer`
 
 ### Notifiers
@@ -267,7 +267,7 @@ class NotifierBase(object):
 ```
 
 To make your package visible to `backwork` you will also need to declare an
-[`entry_point`](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins)
+[`entry_point`](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plug-ins)
 in your `setup.py` file.
 
 Each plug-in type has a different `entry_point` key:
