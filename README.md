@@ -60,7 +60,7 @@ optional arguments:
 ```
 
 #### Available plugin-ins:
-* [backwork-backup-mongo](https://github.ibm.com/apset/backwork-backup-mongo)
+* `backwork-backup-mongo`
 
 ### Upload
 Upload plug-ins store your backup files securely in a remote storage.
@@ -80,7 +80,7 @@ optional arguments:
   -h, --help   show this help message and exit
 ```
 #### Available plugin-ins:
-* [backwork-upload-softlayer](https://github.ibm.com/apset/backwork-upload-softlayer)
+* `backwork-upload-softlayer`
 
 ### Notifiers
 Notifiers tell you when things go wrong. More important than having a backup
@@ -109,7 +109,7 @@ optional arguments:
 You can enable as many notifiers as you want on a command.
 
 **Available plug-ins:**
-* [backwork-notify-sentry](https://github.ibm.com/apset/backwork-notify-sentry)
+* `backwork-notify-sentry`
 
 ## Examples
 #### Backup a MongoDB database running locally
