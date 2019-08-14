@@ -14,7 +14,6 @@ from . import notifiers
 from . import upload
 from . import download
 
-
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
 
