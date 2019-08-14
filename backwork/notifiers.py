@@ -7,7 +7,7 @@ import os
 from .lib import utils
 
 CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
-ENGINES = utils.load_engines("monsoon.notifiers")
+ENGINES = utils.load_engines("backwork.notifiers")
 ACTIVE_ENGINES = []
 
 def parse_args(parser):

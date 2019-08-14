@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.2.0][] - 2019-08-14
+
+### Changed
+-  Changed package name from `monsoon` to `backwork`
+
 ## [0.1.7][] - 2017-06-07
 ### Fixed
 -   Version number
@@ -15,6 +20,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   Travis CI integration
 ### Fixed
 -   Name conflict between
-    [monsoon](https://pypi.python.org/pypi/monsoon/0.1.2) and
-    `monsoon-cli`
+    [backwork](https://pypi.python.org/pypi/backwork/0.1.2) and
+    `backwork-cli`
 -   Pylint style

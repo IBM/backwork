@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Backup simplified.
 
-monsoon is a toolkit that simplifies the process of backing up databases. It
+backwork is a toolkit that simplifies the process of backing up databases. It
 handles the backup process itself as well as upload and error notification.
 """
 
@@ -18,6 +18,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO,
 
 LOG = logging.getLogger(__name__)
 
+
 def parse_args():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser()
@@ -31,6 +32,7 @@ def parse_args():
     upload.parse_args(subparsers)
 
     return parser.parse_known_args()
+
 
 def main():
     """Core functionality."""

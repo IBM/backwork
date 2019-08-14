@@ -1,6 +1,6 @@
 """Backup simplified.
 
-monsoon is a toolkit that simplifies the process of backing up databases. It
+backwork is a toolkit that simplifies the process of backing up databases. It
 handles the backup process itself as well as upload and error notification.
 """
 
@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md')) as f:
 
 setup(
     name="backwork",
-    version="0.1.8",
+    version="0.2.0",
     description="Backup made easy.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
@@ -39,7 +39,7 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "monsoon=monsoon:main"
+            "backwork=backwork:main"
         ]
     }
 )

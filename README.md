@@ -1,23 +1,23 @@
-# monsoon
+# backwork [![Build Status](https://travis-ci.org/IBM/backwork.svg?branch=master)](https://travis-ci.org/IBM/backwork) [![PyPI version](https://badge.fury.io/py/backwork.svg)](https://badge.fury.io/py/backwork)
 Backup simplified.
 
-`monsoon` is a toolkit that simplifies the process of backing up databases. It
+`backwork` is a toolkit that simplifies the process of backing up databases. It
 handles the backup process itself as well as upload and error notification.
 
 ## Prerequisites
 * Python 2.7
 
 ## Installing
-You can install `monsoon` from GHE using `pip`:
+You can install `backwork` using `pip`:
 ```sh
-$ pip install git+ssh://git@github.ibm.com/apset/monsoon
+$ pip install backwork
 ```
 
 ## Running
-After installing you should have a `monsoon` command available.
+After installing you should have a `backwork` command available.
 ```
-$ monsoon --help
-usage: monsoon [-h] [-n NOTIFIERS] {backup,upload} ...
+$ backwork --help
+usage: backwork [-h] [-n NOTIFIERS] {backup,upload} ...
 
 positional arguments:
   {backup,upload}
@@ -29,8 +29,11 @@ optional arguments:
 ```
 
 ## Plug-ins
-Just having `monsoon` is not enough. You will need to the plug-ins that better
-suite your needs.
+Just having `backwork` is not enough. You will need to the plug-ins that
+suit your needs. You can install plugins by running:
+```sh
+$ pip install <plugin_name>
+```
 
 Plug-ins are divided into three categories:
 
@@ -38,13 +41,13 @@ Plug-ins are divided into three categories:
 Backup plugins are responsible for connecting to a databases and doing the
 actual backup process.
 
-Once you install a backup plug-in it will be available via the `monsoon backup`
+Once you install a backup plug-in it will be available via the `backwork backup`
 command:
 ```sh
-$ monsoon backup --help
-usage: monsoon backup [-h] [-U] {mongo} ...
+$ backwork backup --help
+usage: backwork backup [-h] [-U] {mongo} ...
 
-Perform database backups. Run `monsoon backup {database_type} -h` for more
+Perform database backups. Run `backwork backup {database_type} -h` for more
 details on each supported database.
 
 positional arguments:
@@ -57,17 +60,17 @@ optional arguments:
 ```
 
 #### Available plugin-ins:
-* [monsoon-backup-mongo](https://github.ibm.com/apset/monsoon-backup-mongo)
+* [backwork-backup-mongo](https://github.ibm.com/apset/backwork-backup-mongo)
 
 ### Upload
 Upload plug-ins store your backup files securely in a remote storage.
 
-You can use them with the `monsoon upload` command:
+You can use them with the `backwork upload` command:
 ```sh
-$ monsoon upload --help
-usage: monsoon upload [-h] {softlayer} ...
+$ backwork upload --help
+usage: backwork upload [-h] {softlayer} ...
 
-Upload a file to remote service. Run `monsoon upload {service} -h` for more
+Upload a file to remote service. Run `backwork upload {service} -h` for more
 details on each supported service.
 
 positional arguments:
@@ -77,18 +80,18 @@ optional arguments:
   -h, --help   show this help message and exit
 ```
 #### Available plugin-ins:
-* [monsoon-upload-softlayer](https://github.ibm.com/apset/monsoon-upload-softlayer)
+* [backwork-upload-softlayer](https://github.ibm.com/apset/backwork-upload-softlayer)
 
 ### Notifiers
 Notifiers tell you when things go wrong. More important than having a backup
 process configured is knowing when this process fails.
 
-Notifiers are enabled on the `monsoon` command using the `-n` or `--notify`
+Notifiers are enabled on the `backwork` command using the `-n` or `--notify`
 arguments. They may also require some extra values, such API keys.
 
 ```sh
-$ monsoon --help
-usage: monsoon [-h] [-n NOTIFIERS] [--sentry-dsn SENTRY_DSN]
+$ backwork --help
+usage: backwork [-h] [-n NOTIFIERS] [--sentry-dsn SENTRY_DSN]
                {backup,upload} ...
 
 positional arguments:
@@ -106,17 +109,17 @@ optional arguments:
 You can enable as many notifiers as you want on a command.
 
 **Available plug-ins:**
-* [monsoon-notify-sentry](https://github.ibm.com/apset/monsoon-notify-sentry)
+* [backwork-notify-sentry](https://github.ibm.com/apset/backwork-notify-sentry)
 
 ## Examples
 #### Backup a MongoDB database running locally
 ```sh
-$ monsoon backup mongo
+$ backwork backup mongo
 2017-01-15 03:58:15,270 backup.mongo INFO    starting mongo backup...
-2017-01-15 03:58:15,270 backup.mongo INFO    saving file to /Users/laoqui/Projects/monsoon/dumps/mongo_backup_20170115-035815.archive.gz
+2017-01-15 03:58:15,270 backup.mongo INFO    saving file to /Users/laoqui/Projects/backwork/dumps/mongo_backup_20170115-035815.archive.gz
 2017-01-15 03:58:15,350 backup.mongo INFO    output:
 
-        2017-01-15T03:58:15.342-0500    writing app.products to archive '/Users/laoqui/Projects/monsoon/dumps/mongo_backup_20170115-035815.archive.gz'
+        2017-01-15T03:58:15.342-0500    writing app.products to archive '/Users/laoqui/Projects/backwork/dumps/mongo_backup_20170115-035815.archive.gz'
         2017-01-15T03:58:15.347-0500    done dumping app.products (1 document)
 
 2017-01-15 03:58:15,350 backup.mongo INFO    backup complete
@@ -126,29 +129,29 @@ folder called `dumps` in the current directory.
 
 #### Backup remote MongoDB database
 ```sh
-$ monsoon backup mongo -h <HOST IP>:<PORT> -u <USER> -p<PASSWORD>
+$ backwork backup mongo -h <HOST IP>:<PORT> -u <USER> -p<PASSWORD>
 ```
 
 #### Backup a MongoDB to a specific folder and file name
 ```sh
-$ monsoon backup mongo -o /var/backups --archive=mongo_backup.archive
+$ backwork backup mongo -o /var/backups --archive=mongo_backup.archive
 ```
 
 #### Upload a backup file to Softlayer ObjectStorage
 ```sh
-$ monsoon upload softayer -u <USERNAME> -p <API KEY> -d <DATACENTER> -c <CONTAINER> /path/to/file /remote/path/location
+$ backwork upload softayer -u <USERNAME> -p <API KEY> -d <DATACENTER> -c <CONTAINER> /path/to/file /remote/path/location
 ```
 
 #### User Sentry to receive error messages
 ```sh
-$ monsoon -n sentry --sentry-dsn <SENTRY DSN> backup mongo -o /var/backups --archive=mongo_backup.archive
+$ backwork -n sentry --sentry-dsn <SENTRY DSN> backup mongo -o /var/backups --archive=mongo_backup.archive
 ```
 
 #### More info
 Check the `--help` information for each of the commands for more details.
 
 ## Extending
-The best way to extend `monsoon` is by creating new plugi-ins. They are simple
+The best way to extend `backwork` is by creating new plugi-ins. They are simple
 Python packages that implement a few set of methods. Here are some base classes
 you can use as a starting point:
 
@@ -229,7 +232,7 @@ class NotifierBase(object):
 
     Attributes:
         command     the value used to enable a notifier in the command line,
-                    e.g.: `monsoon -n {command}`
+                    e.g.: `backwork -n {command}`
     """
     command = ""
 
@@ -263,7 +266,7 @@ class NotifierBase(object):
         raise NotImplementedError("Base method not overriden.")
 ```
 
-To make your package visible to `monsoon` you will also need to declare an
+To make your package visible to `backwork` you will also need to declare an
 [`entry_point`](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins)
 in your `setup.py` file.
 
@@ -274,7 +277,7 @@ Each plug-in type has a different `entry_point` key:
 setup(
     ...
     entry_points={
-        "monsoon.backups": [
+        "backwork.backups": [
             "<COMMAND NAME>": "module:BackupClass"
         ]
     },
@@ -286,7 +289,7 @@ setup(
 setup(
     ...
     entry_points={
-        "monsoon.uploads": [
+        "backwork.uploads": [
             "<COMMAND NAME>": "module:UploadClass"
         ]
     },
@@ -298,7 +301,7 @@ setup(
 setup(
     ...
     entry_points={
-        "monsoon.notifiers": [
+        "backwork.notifiers": [
             "<COMMAND NAME>": "module:NotifierClass"
         ]
     },
@@ -306,7 +309,7 @@ setup(
 ```
 
 Once your plug-in is ready you can use `pip` to install it and it should be
-available to be used be `monsoon`.
+available to be used be `backwork`.
 
 ## Future work
 * Add support for more databases, storage services and notifiers

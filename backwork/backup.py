@@ -10,13 +10,13 @@ from .lib import utils
 __all__ = ["parse_args", "backup", "BackupError"]
 
 CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
-ENGINES = utils.load_engines("monsoon.backups")
+ENGINES = utils.load_engines("backwork.backups")
 
 def parse_args(subparsers):
     """Parse command line arguments passed to the backup command."""
     backup_parser = subparsers.add_parser("backup",
                                           description="""Perform database
-                                        backups. Run `monsoon backup
+                                        backups. Run `backwork backup
                                         {database_type} -h` for more details
                                         on each supported database.""")
 

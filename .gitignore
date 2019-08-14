@@ -1,6 +1,7 @@
 .DS_Store
 venv
 *.pyc
+.env
 
 # Distribution / packaging
 build/
