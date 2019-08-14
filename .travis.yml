@@ -1,0 +1,16 @@
+language: python
+python: '3.6'
+cache:
+  pip: true
+install:
+- pip install .
+script:
+- echo "no tests implemented"
+deploy:
+  - provider: pypi
+    user: __token__
+    password:
+      secure: gcb9pji6lPpTQHGN//frQfQbDQAiTBXWiL49m7D+e0bqkvxIj3uymdZn5+t0uwI/9tpU0/iMwC5bac0a12qjVrZLrSmXbHfFx1io0eJHxq1Z1vCFKhIiUymBl6DqunUwamqeqG8f+ShAuqJN2TclblOOLO1XPnRyxpJGl74qtNByul5iOSO4c47L6nwe5KgeaU7tlmZrAUEUNxguEnOQTtVAgHgIjmVsUJFFVwRwk7yR19jWNMH86+a+IMhF0SQlBCfAfGIX9/IaayQ2mUFbO/zWMLzJmPf2woQdug9aYqy2vJHnBRfTU3fGoMFoof1eqRBSpIcKho4omv4slYFY0hKqGGRlM9eR1ZdSMmMLMAp6wzXpoJR2XclGGdGkMWs0zG9DYWezkaD3FxuQ2DcoUbDRyFeo6KlWS59z3l9ZTbwWZ7ix21Um9MyVRqpXMBEzC6A2XpiJ6tsfsVu2qGp8HQ1Pl83BSmvzlSteohqMjbfMO4beZ9FRVwcO5GVqxmCr/aTOpbQ+ASJrPfgDu2OHw8ZS2CTVcx00dZvClDshyQeN/SM5eEhkfQu+B7wSNUTjlAdMzZiQRm8vECya61yJwURES/qiqmuj3tgQ5r4wUQl/1WKJ/hpg61/pW13O33JahsgLOes9PAMze9zfJQw9Z9DdG6+m0rM/SlTvbcBlQfc=
+    on:
+      tags: true
+      repo: IBM/backwork
