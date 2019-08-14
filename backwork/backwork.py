@@ -10,6 +10,7 @@ import logging
 import sys
 
 from . import backup
+from . import restore
 from . import notifiers
 from . import upload
 from . import download
@@ -30,6 +31,7 @@ def parse_args():
     # parse subcommand
     subparsers = parser.add_subparsers(dest="command")
     backup.parse_args(subparsers)
+    restore.parse_args(subparsers)
     upload.parse_args(subparsers)
     download.parse_args(subparsers)
 
@@ -44,6 +46,9 @@ def main():
     try:
         if args.command == "backup":
             backup.backup(args, extra)
+
+        elif args.command == "restore":
+            restore.restore(args, extra)
 
         elif args.command == "upload":
             upload.upload(args, extra)
