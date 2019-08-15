@@ -13,6 +13,7 @@ from . import backup
 from . import restore
 from . import notifiers
 from . import upload
+from . import show
 from . import download
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
@@ -33,6 +34,7 @@ def parse_args():
     backup.parse_args(subparsers)
     restore.parse_args(subparsers)
     upload.parse_args(subparsers)
+    show.parse_args(subparsers)
     download.parse_args(subparsers)
 
     return parser.parse_known_args()
@@ -52,6 +54,9 @@ def main():
 
         elif args.command == "upload":
             upload.upload(args, extra)
+
+        elif args.command == "show":
+            show.show(args, extra)
 
         elif args.command == "download":
             download.download(args, extra)

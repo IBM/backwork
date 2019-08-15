@@ -78,7 +78,7 @@ optional arguments:
 ### Upload
 Upload plug-ins store and retrieve your backup files securely from remote storage.
 
-You can use them with the `backwork upload` and `backwork download` commands:
+You can use them with the `backwork upload`, `backwork show`, and `backwork download` commands:
 ```sh
 $ backwork upload --help
 usage: backwork upload [-h] {softlayer} ...
@@ -91,6 +91,20 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
+```
+
+```sh
+$ backwork show --help
+usage: backwork show [-h] {cos} ...
+
+Shows available backups on a remote service. Run `backwork show {service} -h` for
+more details on each supported service.
+
+positional arguments:
+  {cos}
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 ```sh
@@ -323,6 +337,9 @@ setup(
         "backwork.uploads": [
             "<COMMAND NAME>": "module:UploadClass"
         ],
+        "backwork.shows": [
+            "<COMMAND NAME>": "module:ShowClass"
+        ]
         "backwork.downloads": [
             "<COMMAND NAME>": "module:DownloadClass"
         ]
