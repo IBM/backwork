@@ -21,10 +21,6 @@ def parse_args(subparsers):
                                         {database_type} -h` for more details
                                         on each supported database.""")
 
-    restore_parser.add_argument("-U", "--upload", action="store_true",
-                                help="""output restore data to stdout to allow
-                               piping it to an upload command""")
-
     # load engines' parsers
     restore_subparsers = restore_parser.add_subparsers(dest="type")
     for _, klass in ENGINES.items():
