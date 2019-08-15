@@ -10,8 +10,10 @@ import logging
 import sys
 
 from . import backup
+from . import restore
 from . import notifiers
 from . import upload
+from . import download
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format="%(asctime)s %(name)s %(levelname)-7s %(message)s")
@@ -29,7 +31,9 @@ def parse_args():
     # parse subcommand
     subparsers = parser.add_subparsers(dest="command")
     backup.parse_args(subparsers)
+    restore.parse_args(subparsers)
     upload.parse_args(subparsers)
+    download.parse_args(subparsers)
 
     return parser.parse_known_args()
 
@@ -43,8 +47,14 @@ def main():
         if args.command == "backup":
             backup.backup(args, extra)
 
+        elif args.command == "restore":
+            restore.restore(args, extra)
+
         elif args.command == "upload":
             upload.upload(args, extra)
+
+        elif args.command == "download":
+            download.download(args, extra)
 
     except Exception as error:  # pylint: disable=broad-except
         notifiers.notify(error)

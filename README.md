@@ -1,8 +1,8 @@
 # backwork [![Build Status](https://travis-ci.org/IBM/backwork.svg?branch=master)](https://travis-ci.org/IBM/backwork) [![PyPI version](https://badge.fury.io/py/backwork.svg)](https://badge.fury.io/py/backwork)
 Backup simplified.
 
-`backwork` is a toolkit that simplifies the process of backing up databases. It
-handles the backup process itself as well as upload and error notification.
+`backwork` is a toolkit that simplifies the process of backing up and restoring databases. It
+handles the backup process itself as well as upload, download, restoration, and error notification.
 
 ## Prerequisites
 * Python 2.7
@@ -17,10 +17,10 @@ $ pip install backwork
 After installing you should have a `backwork` command available.
 ```
 $ backwork --help
-usage: backwork [-h] [-n NOTIFIERS] {backup,upload} ...
+usage: backwork [-h] [-n NOTIFIERS] {backup,restore,upload,download} ...
 
 positional arguments:
-  {backup,upload}
+  {backup,restore,upload,download}
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -38,11 +38,10 @@ $ pip install <plug-in_name>
 Plug-ins are divided into three categories:
 
 ### Backup
-Backup plug-ins are responsible for connecting to a databases and doing the
-actual backup process.
+Backup plug-ins are responsible for connecting to databases and doing the
+actual backup process, as well as the restore process for the backups.
 
-Once you install a backup plug-in it will be available via the `backwork backup`
-command:
+Once you install a backup plug-in it will be available via the `backwork backup` and `backwork restore` commands:
 ```sh
 $ backwork backup --help
 usage: backwork backup [-h] [-U] {mongo} ...
@@ -59,13 +58,27 @@ optional arguments:
                 command
 ```
 
+```
+usage: backwork restore [-h] [-U] {mongo} ...
+
+Perform database restores. Run `backwork restore {database_type} -h` for more
+details on each supported database.
+
+positional arguments:
+  {mongo}
+
+optional arguments:
+  -h, --help    show this help message and exit
+```
+
+
 #### Available plug-ins:
 * `backwork-backup-mongo`
 
 ### Upload
-Upload plug-ins store your backup files securely in a remote storage.
+Upload plug-ins store and retrieve your backup files securely from remote storage.
 
-You can use them with the `backwork upload` command:
+You can use them with the `backwork upload` and `backwork download` commands:
 ```sh
 $ backwork upload --help
 usage: backwork upload [-h] {softlayer} ...
@@ -79,6 +92,21 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
 ```
+
+```sh
+$ backwork download --help
+usage: backwork download [-h] {softlayer} ...
+
+Download a file from a remote service. Run `backwork upload {service} -h` for more
+details on each supported service.
+
+positional arguments:
+  {softlayer}
+
+optional arguments:
+  -h, --help   show this help message and exit
+```
+
 #### Available plug-ins:
 * `backwork-upload-softlayer`
 
@@ -279,6 +307,9 @@ setup(
     entry_points={
         "backwork.backups": [
             "<COMMAND NAME>": "module:BackupClass"
+        ],
+        "backwork.restores": [
+            "<COMMAND NAME>": "module:RestoreClass"
         ]
     },
     ...
@@ -291,6 +322,9 @@ setup(
     entry_points={
         "backwork.uploads": [
             "<COMMAND NAME>": "module:UploadClass"
+        ],
+        "backwork.downloads": [
+            "<COMMAND NAME>": "module:DownloadClass"
         ]
     },
     ...
