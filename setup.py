@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md')) as f:
 
 setup(
     name="backwork",
-    version="0.2.0",
+    version="0.3.0",
     description="Backup made easy.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
