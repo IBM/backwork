@@ -34,12 +34,14 @@ suit your needs. You can install plug-ins by running:
 ```sh
 $ pip install <plug-in_name>
 ```
+You can discover available plug-ins by [viewing the `backwork-plugin` topic on Github.](https://github.com/topics/backwork-plugin)
 
 Plug-ins are divided into three categories:
 
 ### Backup
 Backup plug-ins are responsible for connecting to databases and doing the
 actual backup process, as well as the restore process for the backups.
+You can discover available backup plug-ins by [viewing the `backwork-plugin-backup` topic on Github.](https://github.com/topics/backwork-plugin-backup)
 
 Once you install a backup plug-in it will be available via the `backwork backup` and `backwork restore` commands:
 ```sh
@@ -77,6 +79,7 @@ optional arguments:
 
 ### Upload
 Upload plug-ins store and retrieve your backup files securely from remote storage.
+You can discover available upload plug-ins by [viewing the `backwork-plugin-upload` topic on Github.](https://github.com/topics/backwork-plugin-upload)
 
 You can use them with the `backwork upload`, `backwork show`, and `backwork download` commands:
 ```sh
@@ -127,6 +130,7 @@ optional arguments:
 ### Notifiers
 Notifiers tell you when things go wrong. More important than having a backup
 process configured is knowing when this process fails.
+You can discover available notifier plug-ins by [viewing the `backwork-plugin-notifier` topic on Github.](https://github.com/topics/backwork-plugin-notifier)
 
 Notifiers are enabled on the `backwork` command using the `-n` or `--notify`
 arguments. They may also require some extra values, such API keys.
